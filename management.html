@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white p-10">
+    <h1 class="text-3xl font-bold mb-4">Staff Management</h1>
+    <p class="text-gray-400 mb-6">Manage server staff members.</p>
+
+    <!-- Add Staff -->
+    <div class="bg-gray-800 p-6 rounded-lg shadow-md mb-6">
+        <h2 class="text-xl font-bold mb-3">Add Staff Member</h2>
+        <div class="flex">
+            <input type="text" id="staff-name" class="w-full p-3 bg-gray-700 text-white rounded-l focus:outline-none" placeholder="Enter username...">
+            <select id="staff-role" class="bg-gray-700 text-white p-3 border-l border-gray-600">
+                <option>Admin</option>
+                <option>Moderator</option>
+                <option>Helper</option>
+            </select>
+            <button onclick="fakeAddStaff()" class="bg-blue-500 px-5 py-3 rounded-r hover:bg-blue-600 transition">Add</button>
+        </div>
+    </div>
+
+    <!-- Staff List -->
+    <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-bold mb-3">Current Staff</h2>
+        <table class="w-full text-left">
+            <thead>
+                <tr class="border-b border-gray-700">
+                    <th class="p-3 text-gray-400">Username</th>
+                    <th class="p-3 text-gray-400">Role</th>
+                    <th class="p-3 text-gray-400 text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody id="staff-list">
+                <tr class="border-b border-gray-700 hover:bg-gray-700 transition">
+                    <td class="p-4">ShadowNinja</td>
+                    <td class="p-4"><span class="bg-red-500 px-3 py-1 rounded">Admin</span></td>
+                    <td class="p-4 text-center">
+                        <button class="edit-staff-btn bg-yellow-500 px-4 py-2 rounded hover:bg-yellow-600 transition">Edit</button>
+                        <button class="remove-staff-btn bg-red-500 px-4 py-2 rounded hover:bg-red-600 transition ml-2">Remove</button>
+                    </td>
+                </tr>
+                <tr class="border-b border-gray-700 hover:bg-gray-700 transition">
+                    <td class="p-4">ToxicSteve</td>
+                    <td class="p-4"><span class="bg-yellow-500 px-3 py-1 rounded">Moderator</span></td>
+                    <td class="p-4 text-center">
+                        <button class="edit-staff-btn bg-yellow-500 px-4 py-2 rounded hover:bg-yellow-600 transition">Edit</button>
+                        <button class="remove-staff-btn bg-red-500 px-4 py-2 rounded hover:bg-red-600 transition ml-2">Remove</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Edit Staff Modal -->
+    <div id="edit-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-1/3">
+            <h2 class="text-xl font-bold mb-3">Edit Staff Member</h2>
+            <p class="text-gray-400 mb-3">Modify the role for <span id="edit-username" class="font-bold text-blue-400"></span>.</p>
+            <select id="edit-role" class="w-full bg-gray-700 text-white p-3 rounded mb-4">
+                <option>Admin</option>
+                <option>Moderator</option>
+                <option>Helper</option>
+            </select>
+            <div class="flex justify-end">
+                <button onclick="closeEditModal()" class="bg-gray-600 px-4 py-2 rounded hover:bg-gray-700 transition">Cancel</button>
+                <button onclick="fakeEditStaff()" class="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600 transition ml-2">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentEditUser = "";
+
+        function fakeAddStaff() {
+            const name = document.getElementById('staff-name').value.trim();
+            const role = document.getElementById('staff-role').value;
+            
+            if (name === "") {
+                alert("Please enter a username.");
+                return;
+            }
+
+            alert(`${name} has been added as a ${role} (Demo Only).`);
+        }
+
+        document.querySelectorAll(".remove-staff-btn").forEach(button => {
+            button.addEventListener("click", () => alert("Staff member removed (Demo Only)."));
+        });
+
+        // Open Edit Modal
+        document.querySelectorAll(".edit-staff-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                const row = this.closest("tr");
+                const username = row.cells[0].textContent;
+                const currentRole = row.cells[1].textContent.trim();
+                
+                document.getElementById("edit-username").textContent = username;
+                document.getElementById("edit-role").value = currentRole;
+                currentEditUser = username;
+
+                document.getElementById("edit-modal").classList.remove("hidden");
+            });
+        });
+
+        // Close Modal
+        function closeEditModal() {
+            document.getElementById("edit-modal").classList.add("hidden");
+        }
+
+        // Fake Edit Staff
+        function fakeEditStaff() {
+            const newRole = document.getElementById("edit-role").value;
+            alert(`${currentEditUser}'s role has been changed to ${newRole} (Demo Only).`);
+            closeEditModal();
+        }
+    </script>
+</body>
+</html>

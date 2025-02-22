@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punishments</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white p-10">
+    <h1 class="text-3xl font-bold mb-4">Punishments</h1>
+    <p class="text-gray-400 mb-6">View and manage player bans, mutes, and warnings.</p>
+
+    <!-- Search Bar -->
+    <div class="flex mb-6">
+        <input type="text" id="search" class="w-full p-3 bg-gray-800 text-white rounded-l focus:outline-none" placeholder="Search by player name...">
+        <button class="bg-blue-500 px-5 py-3 rounded-r hover:bg-blue-600 transition">Search</button>
+    </div>
+
+    <!-- Punishment Table -->
+    <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+        <table class="w-full text-left">
+            <thead>
+                <tr class="border-b border-gray-700">
+                    <th class="p-3 text-gray-400">Player</th>
+                    <th class="p-3 text-gray-400">Type</th>
+                    <th class="p-3 text-gray-400">Duration</th>
+                    <th class="p-3 text-gray-400">Reason</th>
+                    <th class="p-3 text-gray-400 text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-b border-gray-700 hover:bg-gray-700 transition">
+                    <td class="p-4">xXNoobSlayerXx</td>
+                    <td class="p-4"><span class="bg-red-500 px-3 py-1 rounded">Ban</span></td>
+                    <td class="p-4">30 days</td>
+                    <td class="p-4">Hacking</td>
+                    <td class="p-4 text-center">
+                        <button class="unban-btn bg-red-500 px-4 py-2 rounded hover:bg-red-600 transition">Unban</button>
+                    </td>
+                </tr>
+                <tr class="border-b border-gray-700 hover:bg-gray-700 transition">
+                    <td class="p-4">ToxicSteve</td>
+                    <td class="p-4"><span class="bg-yellow-500 px-3 py-1 rounded">Mute</span></td>
+                    <td class="p-4">1 hour</td>
+                    <td class="p-4">Toxicity</td>
+                    <td class="p-4 text-center">
+                        <button class="unmute-btn bg-green-500 px-4 py-2 rounded hover:bg-green-600 transition">Unmute</button>
+                    </td>
+                </tr>
+                <tr class="border-b border-gray-700 hover:bg-gray-700 transition">
+                    <td class="p-4">ShadowNinja</td>
+                    <td class="p-4"><span class="bg-yellow-500 px-3 py-1 rounded">Mute</span></td>
+                    <td class="p-4">10 minutes</td>
+                    <td class="p-4">Spamming</td>
+                    <td class="p-4 text-center">
+                        <button class="unmute-btn bg-green-500 px-4 py-2 rounded hover:bg-green-600 transition">Unmute</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.querySelectorAll(".unban-btn").forEach(button => {
+            button.addEventListener("click", () => alert("User has been unbanned (Demo Only)"));
+        });
+
+        document.querySelectorAll(".unmute-btn").forEach(button => {
+            button.addEventListener("click", () => alert("User has been unmuted (Demo Only)"));
+        });
+    </script>
+</body>
+</html>

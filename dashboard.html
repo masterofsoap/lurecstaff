@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-gray-800 p-5">
+            <img src="lurec_full_logo_no_bg.png" alt="Lurec Network Logo" class="mx-auto mb-5 w-32">
+            <h1 class="text-xl font-bold text-blue-400">LUREC NETWORK</h1>
+            <nav class="mt-5">
+                <a href="home.html" target="content-frame" class="nav-link block py-2 px-4 hover:bg-gray-700 transition duration-300">Home</a>
+                <a href="punishments.html" target="content-frame" class="nav-link block py-2 px-4 hover:bg-gray-700 transition duration-300">Punishments</a>
+                <a href="alts.html" target="content-frame" class="nav-link block py-2 px-4 hover:bg-gray-700 transition duration-300">Check Alts</a>
+                <a href="logs.html" target="content-frame" class="nav-link block py-2 px-4 hover:bg-gray-700 transition duration-300">Punishment Logs</a>
+                <a href="management.html" target="content-frame" class="nav-link block py-2 px-4 hover:bg-gray-700 transition duration-300">Management</a>
+                <a href="console.html" target="content-frame" class="nav-link block py-2 px-4 hover:bg-gray-700 transition duration-300">Console</a>
+            </nav>
+        </div>
+        <!-- Main Content -->
+        <iframe name="content-frame" src="home.html" class="flex-1 p-10 border-none"></iframe>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white p-10">
+    <h1 class="text-3xl font-bold mb-4">Server Console</h1>
+    <p class="text-gray-400 mb-6">Commans :o</p>
+
+    <!-- Console Output -->
+    <div id="console-output" class="bg-black p-4 h-64 overflow-y-auto border border-gray-700 rounded">
+        <p class="text-green-400">[Server] Console initialized...</p>
+    </div>
+
+    <!-- Command Input -->
+    <div class="flex mt-4">
+        <input type="text" id="console-input" class="w-full p-3 bg-gray-800 text-white rounded-l focus:outline-none" placeholder="Enter command...">
+        <button onclick="fakeExecuteCommand()" class="bg-blue-500 px-5 py-3 rounded-r hover:bg-blue-600 transition">Send</button>
+    </div>
+
+    <script>
+        function fakeExecuteCommand() {
+            const input = document.getElementById("console-input");
+            const output = document.getElementById("console-output");
+
+            if (input.value.trim() === "") {
+                alert("Please enter a command.");
+                return;
+            }
+
+            const command = input.value.trim();
+            input.value = "";
+
+            // Fake response messages
+            let response;
+            if (command.startsWith("/ban")) {
+                response = `[Server] Player banned successfully.`;
+            } else if (command.startsWith("/mute")) {
+                response = `[Server] Player muted successfully.`;
+            } else if (command.startsWith("/kick")) {
+                response = `[Server] Player kicked successfully.`;
+            } else {
+                response = `[Server] Unknown command.`;
+            }
+
+            output.innerHTML += `<p class="text-white">> ${command}</p>`;
+            output.innerHTML += `<p class="text-green-400">${response}</p>`;
+
+            // Auto-scroll to latest message
+            output.scrollTop = output.scrollHeight;
+        }
+    </script>
+</body>
+</html>

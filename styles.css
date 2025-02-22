@@ -1,0 +1,88 @@
+/* Background for login page */
+.login-bg {
+    background: url('/background.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Glass effect for login box */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Smooth input styling */
+.input-field {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    color: white;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    font-size: 16px;
+}
+
+.input-field::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.input-field:focus {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.02);
+}
+
+/* Animated button */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    color: white;
+    font-size: 16px;
+}
+
+.btn:hover {
+    box-shadow: 0 0 20px #00bfffcc;
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.animate-fade-out {
+    animation: fadeOut 0.5s ease-in-out forwards;
+}
